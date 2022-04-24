@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Banner Starts Here -->
+    <div class="heading-page header-text">
+        <section class="page-heading">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="text-content">
+                  <h4>Bloglaaa</h4>
+                  <h2>*-*-*-*-*-*-*-*-*-*-*-*-</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      
+      <!-- Banner Ends Here -->
+
+      <section class="blog-posts grid-system">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="all-blog-posts">
+                <div class="row">
+                  {% for blog in blog_list %}
+                  <a href="{% url 'blog:detail' blog.slug%}"> <div class="col-lg-6">
+                    <div class="blog-post">
+                    
+                      <div class="blog-thumb">
+                        <img src="{{blog.imageURL}}" alt="">
+                      </div>
+                      <div class="down-content">
+                        <span>{{ blog.title}}</span>
+                        <h4></h4>
+                        <ul class="post-info">
+                          <li><a href="#">{{blog.author}}</a></li>
+                          <li><a href="#">{{blog.publish_date}}</a></li>
+                          <li><a href="#">12 Comments</a></li>
+                        </ul>
+                        <p>{{blog.body}}</p>
+                        <div class="post-options">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <ul class="post-tags">
+                                <li><i class="fa fa-tags"></i></li>
+                                <li><a href="#"></a>,</li>
+                                <li><a href="#"></a></li></a>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %} 
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="sidebar">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="sidebar-item search">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+
+{% endblock content %}

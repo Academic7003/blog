@@ -1,0 +1,19 @@
+{% load static %}
+
+
+{% if user.is_authenticated %}
+    <p>Salom {{ user.email }}!</p>   
+    
+{% else %}
+    <p>Siz log in qilmagansiz!</p>
+    
+{% endif %}
+
+{% include 'snippets/header.html' %}
+
+{% block content %}
+
+
+{% endblock content %}
+
+{% include 'snippets/footer.html' %}

@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h4>New Blog</h4>
+<h1>New Blog</h1>
+<h1>New Blog</h1>
+
+
+
+
+
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="heading-page header-text">
+      <section class="page-heading">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="text-content">
+                <h4>Post Details</h4>
+                <h2>Single blog post</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    
+    <!-- Banner Ends Here -->
+
+
+
+    <section class="blog-posts grid-system">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="all-blog-posts">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="blog-post">
+                    <div class="blog-thumb">
+                      <img src={{ blog_post.imageURL }} alt="">
+                    </div>
+                    <div class="down-content">
+                      <span></span>
+                      <a href="post-details.html"><h4>{{ blog_post.title }}</h4></a>
+                      <ul class="post-info">
+                        <li><a href="#">{{ blog_post.author }}</a></li>
+                        <li><a href="#">{{ blog_post.publish_date }}</a></li>
+                        <li><a href="#">10 Comments</a></li>
+                      </ul>
+                      <p>{{ blog_post.body }}</p>
+                      <div class="post-options">
+                        <div class="row">
+                          <div class="col-6">
+                            <ul class="post-tags">
+                              <li><i class="fa fa-tags"></i></li>
+                             
+                            </ul>
+                          </div>
+                          <div class="col-6">
+                            <ul class="post-share">
+                              <li><i class="fa fa-share-alt"></i></li>
+                              <li><a href="#">Facebook</a>,</li>
+                              <li><a href="#"> Twitter</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+                {% comment %} {% if user blog_post.author %} {% endcomment %}
+                
+            
+            
+<a href="{% url 'blog:update' blog_post.slug %}"> update </a>/
+<a href="{% url 'blog:delete' blog_post.slug %}"> delete </a>
+{% comment %} {% endif %} {% endcomment %}
+            
+
+{% endblock content %}

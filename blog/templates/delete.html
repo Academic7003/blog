@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div >
+    <h4>New Blog</h4>
+<h1>New Blog</h1>
+<h1>New Blog</h1>
+
+
+    <!-- Create a Form -->
+    <form method="POST">
+        <!-- Security token by Django -->
+        {% csrf_token %}
+         delete {{form.title}}?
+        
+        
+    </form>
+    <button type="submit" />ok</button>
+    <a href="blog:blogs">Cancel </a>
+</div>
+
+{% endblock content %}
