@@ -1,8 +1,4 @@
-from atexit import register
-from multiprocessing import context
 
-from django.http import HttpResponse
-from accounts.models import Account
 from accounts.forms import *
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
@@ -22,7 +18,7 @@ def registration_view(request):
             raw_password = form.cleaned_data.get('password1')
             account = authenticate(email=email, password=raw_password)
             login(request, account)
-            return redirect('home')
+            return redirect('blog:blogs')
         else:
             context['registration_form'] = form
     else:

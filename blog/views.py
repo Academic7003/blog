@@ -17,8 +17,11 @@ def blog_view(request):
     return render(request, 'blog.html' , context )
 
 def create_blog_view(request): 
-
     context = {}
+    
+    user = request.user
+    if not user.is_authenticated:
+        return redirect('accounts:login')
     form = BlogModelForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         obj = form.save(commit=False)
@@ -45,7 +48,7 @@ def edit_blog_view(request, slug):
     context = {}
     user = request.user
     if not user.is_authenticated:
-        return redirect('login')
+        return redirect('accounts:login')
 
     blog_post = get_object_or_404(BlogPost, slug=slug)
 
@@ -80,7 +83,7 @@ def delete_blog_view(request, slug):
 
     user = request.user
     if not user.is_authenticated:
-        return redirect('login')
+        return redirect('accounts:login')
 
     obj = get_object_or_404(BlogPost, slug = slug)
 
@@ -88,27 +91,13 @@ def delete_blog_view(request, slug):
         return HttpResponse('Aftorlik huquqi yo`q')
 
     
- 
-    # fetch the object related to passed id
-    
- 
- 
     if request.POST:
-        # delete object
+
         obj.delete()
-        # after deleting redirect to
-        # home page
+  
 
         return redirect("blog:blogs")
     context['form']=obj.title
  
     return render(request, "delete.html", context)
 
-
-# def comment_blog_view(request,):
-#     context = {}
-
-#     blog_post = get_object_or_404(BlogPost)
-#     context['comments'] = blog_post
-
-#     return render(request, 'detail.html', context)

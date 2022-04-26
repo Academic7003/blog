@@ -7,10 +7,9 @@ from accounts.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('blog.urls'), name='home'),
-    path('register/', registration_view, name= 'signup'),
-    path('login/', account_authentication, name='login'),
-    path('logout/', logout_view, name='logout')
+    path('', include('blog.urls')),
+    path('accounts/', include('accounts.urls')),
+
 ]
 
 
